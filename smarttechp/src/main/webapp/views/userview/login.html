@@ -1,0 +1,96 @@
+<!doctype html>
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<!-- Mirrored from jthemes.net/themes/f-html/smarttech/html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 21 Nov 2023 09:58:23 GMT -->
+
+<head>
+    <!-- Document Title -->
+    <title>Smart Tech - Ecommerce HTML5 Template</title>
+    <th:block th:insert="userview/layout/head.html"></th:block>
+</head>
+
+<body>
+
+<!-- Page Wrapper -->
+<div id="wrap" class="layout-1">
+
+    <!-- Top bar -->
+    <th:block th:insert="userview/layout/header.html"></th:block>
+    <!-- Content -->
+    <div id="content">
+        <!-- Linking -->
+        <div role="alert" th:text="${error}" th:if="${error}"></div>
+        <div class="linking">
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li class="active">Authentication</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Blog -->
+        <section class="login-sec padding-top-30 padding-bottom-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- Login Your Account -->
+                        <h5>Login Your Account</h5>
+
+                        <!-- FORM -->
+                        <form action="/login" method="post" th:object="${userLogin}">
+                            <ul class="row">
+                                <li class="col-sm-12">
+                                    <label>Email
+                                        <input type="text" class="form-control" name="name" th:field="${userLogin.email}" placeholder="" required>
+                                        <small class="text-danger" th:errors="*{email}"> </small>
+
+                                    </label>
+                                </li>
+                                <li class="col-sm-12">
+                                    <label>Password
+                                        <input type="password" class="form-control" name="pass" th:field="${userLogin.password}" placeholder="" required>
+                                        <small class="text-danger" th:errors="*{password}"> </small>
+
+                                    </label>
+                                </li>
+                                <li class="col-sm-6">
+                                    <div class="checkbox checkbox-primary">
+                                        <input id="cate1" class="styled" type="checkbox" >
+                                        <label for="cate1"> Keep me logged in </label>
+                                    </div>
+                                </li>
+                                <li class="col-sm-6"> <a href="#." class="forget">Forgot your password?</a> </li>
+                                <li class="col-sm-12 text-left">
+                                    <button type="submit" class="btn-round">Login</button>
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- Newslatter -->
+        <th:block th:insert="userview/layout/newslatter.html"></th:block>
+
+    </div>
+    <!-- End Content -->
+
+    <!-- Footer -->
+    <th:block th:insert="userview/layout/footer.html"></th:block>
+    <!-- End Footer -->
+
+    <!-- GO TO TOP  -->
+    <a href="#" class="cd-top"><i class="fa fa-angle-up"></i></a>
+    <!-- GO TO TOP End -->
+</div>
+<!-- End Page Wrapper -->
+
+<!-- JavaScripts -->
+<th:block th:insert="/userview/layout/script.html"></th:block>
+</body>
+
+<!-- Mirrored from jthemes.net/themes/f-html/smarttech/html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 21 Nov 2023 09:58:44 GMT -->
+
+</html>

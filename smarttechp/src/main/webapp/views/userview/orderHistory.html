@@ -1,0 +1,92 @@
+<!doctype html>
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<!-- Mirrored from jthemes.net/themes/f-html/smarttech/html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 21 Nov 2023 09:58:23 GMT -->
+
+<head>
+    <!-- Document Title -->
+    <title>Smart Tech - Ecommerce HTML5 Template</title>
+    <th:block th:insert="userview/layout/head.html"></th:block>
+</head>
+
+<body>
+
+<!-- Page Wrapper -->
+<div id="wrap" class="layout-1">
+
+    <!-- Top bar -->
+    <th:block th:insert="userview/layout/header.html"></th:block>
+    <!-- Content -->
+    <div id="content">
+        <!-- Shopping Cart -->
+        <div class="ship-process padding-top-30 padding-bottom-30">
+            <div class="container">
+                <h3>Order History</h3>
+            </div>
+        </div>
+        <section class="shopping-cart padding-bottom-60">
+            <div class="container">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th class="text-center">Order ID</th>
+                        <th class="text-center">Order Date</th>
+                        <th class="text-center">Quantity</th>
+                        <th class="text-center">Total Price</th>
+                        <th class="text-center">Receiver</th>
+                        <th class="text-center">Phone</th>
+                        <th class="text-center">Email</th>
+                        <th class="text-center">Address</th>
+                        <th class="text-center">Status</th>
+                        <th class="text-center">Action</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Item Cart -->
+                    <tr th:each="order : ${orderList}">
+                        <td class="text-center" th:text="${order.order_Id}"></td>
+                        <td class="text-center" th:text="${order.date}"></td>
+                        <td class="text-center" th:text="${order.total_qty}"></td>
+                        <td class="text-center" th:text="${order.total_price}"></td>
+                        <td class="text-center" th:text="${order.name}"></td>
+                        <td class="text-center" th:text="${order.email}"></td>
+                        <td class="text-center" th:text="${order.phone}"></td>
+                        <td class="text-center" th:text="${order.address}"></td>
+                        <td class="text-center"
+                            th:text="${order.status ? 'Processing' : 'Confirm' }"></td>
+                        <td class="text-center" style="display: flex">
+                            <a class="remove" th:hidden="${!order.status}" th:href="@{/remove-order(id=${order.order_Id})}"><i class="fa fa-close"></i></a>
+                            <a class="remove" th:href="@{/order-detail(id=${order.order_Id})}"><i class="fa fa-pencil"></i></a>
+                        </td>
+                    </tr>
+                    <!-- Item Cart -->
+                    </tbody>
+                </table>
+                <!-- Grand total -->
+            </div>
+        </section>
+        <!-- Newslatter -->
+        <th:block th:insert="userview/layout/newslatter.html"></th:block>
+
+    </div>
+    <!-- End Content -->
+
+    <!-- Footer -->
+    <th:block th:insert="userview/layout/footer.html"></th:block>
+
+    <!-- End Footer -->
+
+    <!-- GO TO TOP  -->
+    <a href="#" class="cd-top"><i class="fa fa-angle-up"></i></a>
+    <!-- GO TO TOP End -->
+</div>
+<!-- End Page Wrapper -->
+
+<!-- JavaScripts -->
+<th:block th:insert="/userview/layout/script.html"></th:block>
+</body>
+
+<!-- Mirrored from jthemes.net/themes/f-html/smarttech/html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 21 Nov 2023 09:58:44 GMT -->
+
+</html>

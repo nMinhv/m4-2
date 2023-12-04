@@ -1,0 +1,154 @@
+<!doctype html>
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<!-- Mirrored from jthemes.net/themes/f-html/smarttech/html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 21 Nov 2023 09:58:23 GMT -->
+
+<head>
+    <!-- Document Title -->
+    <title>Smart Tech - Ecommerce HTML5 Template</title>
+    <th:block th:insert="userview/layout/head.html"></th:block>
+</head>
+
+<body>
+
+<!-- Page Wrapper -->
+<div id="wrap" class="layout-1">
+
+    <!-- Top bar -->
+    <th:block th:insert="userview/layout/header.html"></th:block>
+    <!-- Content -->
+    <div id="content">
+        <!-- Products -->
+        <section class="padding-top-40 padding-bottom-60">
+            <div class="container">
+                <div class="row">
+                    <!-- Products -->
+                    <div class="col-md-9">
+                        <div class="product-detail">
+                            <div class="product" th:object="${product}">
+                                <div class="row">
+                                    <!-- Slider Thumb -->
+                                    <div class="col-xs-5">
+                                        <article class="slider-item on-nav">
+                                            <div class="thumb-slider">
+                                                <ul class="slides">
+                                                    <li data-thumb="images/item-img-1-1.jpg"><img
+                                                            th:src="'/images/' + ${product.previewImg}" alt=""></li>
+                                                </ul>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <!-- Item Content -->
+                                    <div class="col-xs-7"><span class="tags" th:text="${product.category_name}"></span>
+                                        <h5 th:text="${product.productName}"></h5>
+                                        <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                                class="fa fa-star"></i><i
+                                                class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span
+                                                class="margin-left-10"></span></p>
+                                        <div class="row">
+                                            <div class="col-sm-6"><span class="price"
+                                                                        th:text="${product.productPrice}"></span>$
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <p>Availability: <span class="in-stock" th:text="${product.stock}"> In stock</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <!-- List Details -->
+                                        <ul class="bullet-round-list">
+                                            <li>Screen: 1920 x 1080 pixels</li>
+                                            <li>Processor: 2.5 GHz None</li>
+                                            <li>RAM: 8 GB</li>
+                                            <li>Hard Drive: Flash memory solid state</li>
+                                            <li>Graphics : Intel HD Graphics 520 Integrated</li>
+                                            <li>Card Description: Integrated</li>
+                                        </ul>
+                                        <!-- Colors -->
+                                        <!-- Compare Wishlist -->
+                                        <ul class="cmp-list">
+                                            <li><a href="#."><i class="fa fa-heart"></i> Add to Wishlist</a></li>
+                                        </ul>
+                                        <!-- Quinty -->
+                                        <form action="/add-to-cart" method="post">
+                                            <div class="quinty">
+                                                <input type="number" name="amount" value="1" th:max="${product.stock}" min="1">
+                                                <input type="hidden" name="pId" th:value="${product.productId}">
+                                            </div>
+                                            <button type="submit" class="btn-round">
+                                                <i class="icon-basket-loaded margin-right-5"></i>
+                                                Add to Cart
+                                            </button>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Details Tab Section-->
+                            <div class="item-tabs-sec">
+
+                                <!-- Nav tabs -->
+                                <ul class="nav" role="tablist">
+                                    <li role="presentation" class="active"><a href="#pro-detil" role="tab"
+                                                                              data-toggle="tab">Product
+                                        Details</a></li>
+                                    <li role="presentation"><a href="#cus-rev" role="tab" data-toggle="tab">Customer
+                                        Reviews</a></li>
+                                    <!--                                    <li role="presentation"><a href="#ship" role="tab" data-toggle="tab">Shipping &-->
+                                    <!--                                        Payment</a></li>-->
+                                </ul>
+
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div role="tabpanel" class="tab-pane fade in active" id="pro-detil">
+                                        <!-- List Details -->
+                                        <ul class="bullet-round-list">
+                                            <li>Power Smartphone 7s G930F 128GB International version - Silver</li>
+                                            <li> 2G bands: GSM 850 / 900 / 1800 / 1900 3G bands: HSDPA 850 / 900 / 1900
+                                                / 2100 4G bands: LTE
+                                                700 / 800 / 850<br>
+                                                900 / 1800 / 1900 / 2100 / 2600
+                                            </li>
+                                            <li> Dimensions: 142.4 x 69.6 x 7.9 mm (5.61 x 2.74 x 0.31 in) Weight 152 g
+                                                (5.36 oz)
+                                            </li>
+                                            <li> IP68 certified - dust proof and water resistant over 1.5 meter and 30
+                                                minutes
+                                            </li>
+                                            <li> Internal: 128GB, 4 GB RAM</li>
+                                        </ul>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade" id="cus-rev"></div>
+                                    <!--                                    <div role="tabpanel" class="tab-pane fade" id="ship"></div>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Newslatter -->
+        <th:block th:insert="userview/layout/newslatter.html"></th:block>
+
+    </div>
+    <!-- End Content -->
+
+    <!-- Footer -->
+    <th:block th:insert="userview/layout/footer.html"></th:block>
+    <!-- End Footer -->
+
+    <!-- GO TO TOP  -->
+    <a href="#" class="cd-top"><i class="fa fa-angle-up"></i></a>
+    <!-- GO TO TOP End -->
+</div>
+<!-- End Page Wrapper -->
+
+<!-- JavaScripts -->
+<th:block th:insert="/userview/layout/script.html"></th:block>
+</body>
+
+<!-- Mirrored from jthemes.net/themes/f-html/smarttech/html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 21 Nov 2023 09:58:44 GMT -->
+
+</html>

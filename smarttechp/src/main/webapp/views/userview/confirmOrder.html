@@ -1,0 +1,163 @@
+<!doctype html>
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<!-- Mirrored from jthemes.net/themes/f-html/smarttech/html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 21 Nov 2023 09:58:23 GMT -->
+
+<head>
+    <!-- Document Title -->
+    <title>Smart Tech - Ecommerce HTML5 Template</title>
+    <th:block th:insert="userview/layout/head.html"></th:block>
+</head>
+
+<body>
+
+<!-- Page Wrapper -->
+<div id="wrap" class="layout-1">
+
+    <!-- Top bar -->
+    <th:block th:insert="userview/layout/header.html"></th:block>
+    <!-- Content -->
+    <div id="content">
+
+        <!-- Ship Process -->
+        <div class="ship-process padding-top-30 padding-bottom-30">
+            <div class="container">
+                <ul class="row">
+
+                    <!-- Step 1 -->
+                    <li class="col-sm-3">
+                        <div class="media-left"><i class="fa fa-check"></i></div>
+                        <div class="media-body"><span>Step 1</span>
+                            <h6>Shopping Cart</h6>
+                        </div>
+                    </li>
+                    <!-- Step 3 -->
+                    <li class="col-sm-3 current">
+                        <div class="media-left"><i class="flaticon-delivery-truck"></i></div>
+                        <div class="media-body"><span>Step 2</span>
+                            <h6>Delivery Methods</h6>
+                        </div>
+                    </li>
+
+                    <!-- Step 4 -->
+                    <li class="col-sm-3">
+                        <div class="media-left"><i class="fa fa-check"></i></div>
+                        <div class="media-body"><span>Step 3</span>
+                            <h6>Confirmation</h6>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Payout Method -->
+        <section class="padding-bottom-60">
+            <div class="container">
+                <form action="/order-confirm" method="post">
+                    <!-- Payout Method -->
+                    <div class="pay-method check-out">
+
+                        <!-- Shopping Cart -->
+                        <div class="heading">
+                            <h2>Shopping Cart</h2>
+                            <hr>
+                        </div>
+
+                        <!-- Check Item List -->
+                        <ul class="row check-item" th:each="item : ${session.userCartList}">
+                            <li class="col-xs-6">
+                                <p th:text="${item.productName}"></p>
+                            </li>
+                            <li class="col-xs-2 text-center">
+                                <p th:text="${item.productPrice}"></p>
+                            </li>
+                            <li class="col-xs-2 text-center">
+                                <p th:text="${item.quantity}"></p>
+                            </li>
+                            <li class="col-xs-2 text-center">
+                                <p th:text="${item.sub_price}"></p>
+                            </li>
+                        </ul>
+                        <!-- Payment information -->
+
+                        <!-- Check Item List -->
+
+                        <!-- Delivery infomation -->
+                        <div class="heading margin-top-50">
+                            <h2>Delivery infomation</h2>
+                            <hr>
+                        </div>
+
+                        <!-- Information -->
+                        <ul class="row check-item infoma" th:object="${session.userOrder}">
+                            <li class="col-sm-3">
+                                <h6>Name</h6>
+                                <span th:text="${userOrder.name}">s</span>
+                            </li>
+                            <li class="col-sm-3">
+                                <h6>Phone</h6>
+                                <span th:text="${userOrder.phone}"></span>
+                            </li>
+                            <li class="col-sm-3">
+                                <h6>Email</h6>
+                                <span th:text="${userOrder.email}"></span>
+                            </li>
+                            <li class="col-sm-3">
+                                <h6>Address</h6>
+                                <span th:text="${userOrder.address}"></span>
+                            </li>
+                        </ul>
+                        <!-- Information -->
+                        <ul class="row check-item infoma exp">
+                            <li class="col-sm-6">
+                                <span>Expert Delivery</span>
+                            </li>
+                            <li class="col-sm-3">
+                                <h6>24 - 48 hours</h6>
+                            </li>
+                            <li class="col-sm-3">
+                                <h5>+25</h5>
+                            </li>
+                        </ul>
+
+                        <!-- Totel Price -->
+                        <div class="totel-price">
+                            <h4>
+                                <small> Total Price: </small>
+                                <span th:text="${session.userCart.total_price}"></span>
+                            </h4>
+                        </div>
+                    </div>
+
+                    <!-- Button -->
+                    <div class="pro-btn">
+                        <a href="/delivery-method" class="btn-round btn-light">Back to Delivery</a>
+                        <button type="submit" class="btn-round">Proceed to Checkout</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Newslatter -->
+        <th:block th:insert="userview/layout/newslatter.html"></th:block>
+    </div>
+    <!-- End Content -->
+
+    <!-- Footer -->
+    <th:block th:insert="userview/layout/footer.html"></th:block>
+    <!-- End Footer -->
+
+    <!-- GO TO TOP  -->
+    <a href="#" class="cd-top"><i class="fa fa-angle-up"></i></a>
+    <!-- GO TO TOP End -->
+</div>
+<!-- End Page Wrapper -->
+
+<!-- JavaScripts -->
+<th:block th:insert="/userview/layout/script.html"></th:block>
+
+</body>
+
+<!-- Mirrored from jthemes.net/themes/f-html/smarttech/html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 21 Nov 2023 09:58:44 GMT -->
+
+</html>

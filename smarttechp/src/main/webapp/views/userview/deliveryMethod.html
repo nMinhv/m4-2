@@ -1,0 +1,194 @@
+<!doctype html>
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<!-- Mirrored from jthemes.net/themes/f-html/smarttech/html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 21 Nov 2023 09:58:23 GMT -->
+
+<head>
+    <!-- Document Title -->
+    <title>Smart Tech - Ecommerce HTML5 Template</title>
+    <th:block th:insert="userview/layout/head.html"></th:block>
+</head>
+
+<body>
+
+<!-- Page Wrapper -->
+<div id="wrap" class="layout-1">
+
+    <!-- Top bar -->
+    <th:block th:insert="userview/layout/header.html"></th:block>
+    <!-- Content -->
+    <div id="content">
+
+        <!-- Ship Process -->
+        <div class="ship-process padding-top-30 padding-bottom-30">
+            <div class="container">
+                <ul class="row">
+
+                    <!-- Step 1 -->
+                    <li class="col-sm-3">
+                        <div class="media-left"><i class="fa fa-check"></i></div>
+                        <div class="media-body"><span>Step 1</span>
+                            <h6>Shopping Cart</h6>
+                        </div>
+                    </li>
+                    <!-- Step 3 -->
+                    <li class="col-sm-3 current">
+                        <div class="media-left"><i class="flaticon-delivery-truck"></i></div>
+                        <div class="media-body"><span>Step 2</span>
+                            <h6>Delivery Methods</h6>
+                        </div>
+                    </li>
+
+                    <!-- Step 4 -->
+                    <li class="col-sm-3">
+                        <div class="media-left"><i class="fa fa-check"></i></div>
+                        <div class="media-body"><span>Step 3</span>
+                            <h6>Confirmation</h6>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Payout Method -->
+        <section class="padding-bottom-60">
+            <div class="container">
+                <form action="/order-confirm" method="get" th:object="${userOrder}">
+                    <!-- Payout Method -->
+                    <div class="pay-method">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <!-- Your information -->
+                                <div class="heading">
+                                    <h2>Your information</h2>
+                                    <hr>
+                                </div>
+                                <div>
+                                    <div class="row">
+                                        <!-- Name -->
+                                        <div class="col-sm-8">
+                                            <label> Name
+                                                <small class="text-danger" th:errors="*{name}"> </small>
+                                                <input type="text" class="form-control" th:classappend="${#fields.hasErrors('name')}?'border-danger'" name="name" th:field="${userOrder.name}" placeholder="">
+                                            </label>
+                                        </div>
+
+                                        <!-- Address -->
+                                        <div class="col-sm-8">
+                                            <label> Address
+                                                <small class="text-danger" th:errors="*{address}"> </small>
+                                                <input type="text" class="form-control" th:classappend="${#fields.hasErrors('address')}?'border-danger'" name="name" th:field="${userOrder.address}" placeholder="">
+                                            </label>
+                                        </div>
+                                        <!-- Phone -->
+                                        <div class="col-sm-8">
+                                            <label> Phone
+                                                <small class="text-danger" th:errors="*{phone}"> </small>
+                                                <input type="number" class="form-control" th:classappend="${#fields.hasErrors('phone')}?'border-danger'" name="name" th:field="${userOrder.phone}" placeholder="">
+                                            </label>
+                                        </div>
+                                        <!-- Number -->
+                                        <div class="col-sm-8">
+                                            <label> Email
+                                                <small class="text-danger" th:errors="*{email}"> </small>
+                                                <input type="text" class="form-control" th:classappend="${#fields.hasErrors('email')}?'border-danger'" name="name" th:field="${userOrder.email}" placeholder="">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Select Your Transportation -->
+                            <div class="col-md-6">
+                                <div class="heading">
+                                    <h2>Select Your Transportation</h2>
+                                    <hr>
+                                </div>
+                                <div class="transportation">
+                                    <div class="row">
+                                        <!-- Free Delivery -->
+                                        <div class="col-sm-6">
+                                            <label class="charges" for="free">
+                                                <h6>Free Delivery</h6>
+                                                <br>
+                                                <span>7 - 12 days</span>
+                                                <input type="radio" hidden="hidden" value="0" id="free" name="dmt"
+                                                       checked="checked">
+                                            </label>
+                                        </div>
+
+                                        <!-- Free Delivery -->
+                                        <div class="col-sm-6">
+                                            <label for="fast" class="charges select">
+                                                <h6>Fast Delivery</h6>
+                                                <br>
+                                                <span>4 - 7 days</span>
+                                                <span class="deli-charges"> +$25 </span>
+                                                <input type="radio" hidden="hidden" value="25" id="fast" name="dmt">
+                                            </label>
+                                        </div>
+                                        <!-- Expert Delivery -->
+                                        <div class="col-sm-6">
+                                            <label class="charges" for="exp">
+                                                <h6>Expert Delivery</h6>
+                                                <br>
+                                                <span>24 - 48 Hours</span>
+                                                <span class="deli-charges"> +$75 </span>
+                                                <input type="radio" hidden="hidden" value="75" id="exp" name="dmt">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Button -->
+                    <div class="pro-btn">
+                        <a href="/user-cart" class="btn-round btn-light">Back to Cart</a>
+                        <button type="submit" class="btn-round">Go Confirmation</button>
+                    </div>
+                </form>
+            </div>
+
+        </section>
+
+        <!-- Newslatter -->
+        <th:block th:insert="userview/layout/newslatter.html"></th:block>
+    </div>
+    <!-- End Content -->
+
+    <!-- Footer -->
+    <th:block th:insert="userview/layout/footer.html"></th:block>
+    <!-- End Footer -->
+
+    <!-- GO TO TOP  -->
+    <a href="#" class="cd-top"><i class="fa fa-angle-up"></i></a>
+    <!-- GO TO TOP End -->
+</div>
+<!-- End Page Wrapper -->
+
+<!-- JavaScripts -->
+<th:block th:insert="/userview/layout/script.html"></th:block>
+<script>
+    // Add an event listener to each radio button
+    let radioButtons = document.querySelectorAll('input[name="dmt"]');
+    radioButtons.forEach(function (radioButton) {
+        radioButton.addEventListener('change', function () {
+            // Remove 'select' class from all labels
+            document.querySelectorAll('.charges').forEach(function (label) {
+                label.classList.remove('select');
+            });
+
+            // Add 'select' class to the label of the selected radio button
+            if (this.checked) {
+                this.parentNode.classList.add('select');
+            }
+        });
+    });
+</script>
+</body>
+
+<!-- Mirrored from jthemes.net/themes/f-html/smarttech/html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 21 Nov 2023 09:58:44 GMT -->
+
+</html>

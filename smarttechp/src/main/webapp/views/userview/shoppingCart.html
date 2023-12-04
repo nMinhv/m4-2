@@ -1,0 +1,133 @@
+<!doctype html>
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<!-- Mirrored from jthemes.net/themes/f-html/smarttech/html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 21 Nov 2023 09:58:23 GMT -->
+
+<head>
+    <!-- Document Title -->
+    <title>Smart Tech - Ecommerce HTML5 Template</title>
+    <th:block th:insert="userview/layout/head.html"></th:block>
+</head>
+
+<body>
+
+<!-- Page Wrapper -->
+<div id="wrap" class="layout-1">
+
+    <!-- Top bar -->
+    <th:block th:insert="userview/layout/header.html"></th:block>
+    <!-- Content -->
+    <div id="content">
+        <!-- Ship Process -->
+        <div class="ship-process padding-top-30 padding-bottom-30">
+            <div class="container">
+                <ul class="row">
+                    <!-- Step 1 -->
+                    <li class="col-sm-3 current">
+                        <div class="media-left"><i class="flaticon-shopping"></i></div>
+                        <div class="media-body"><span>Step 1</span>
+                            <h6>Shopping Cart</h6>
+                        </div>
+                    </li>
+                    <!-- Step 2 -->
+                    <li class="col-sm-3">
+                        <div class="media-left"><i class="flaticon-delivery-truck"></i></div>
+                        <div class="media-body"><span>Step 2</span>
+                            <h6>Delivery Methods</h6>
+                        </div>
+                    </li>
+                    <!-- Step 4 -->
+                    <li class="col-sm-3">
+                        <div class="media-left"><i class="fa fa-check"></i></div>
+                        <div class="media-body"><span>Step 3</span>
+                            <h6>Confirmation</h6>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Shopping Cart -->
+        <section class="shopping-cart padding-bottom-60">
+            <div class="container">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Items</th>
+                        <th class="text-center">Price</th>
+                        <th class="text-center">Quantity</th>
+                        <th class="text-center">Total Price</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Item Cart -->
+                    <tr th:each="item : ${session.userCartList}">
+                        <td>
+                            <div class="media">
+                                <div class="media-left">
+                                    <a th:href="@{/product-detail(id=${item.product_id})}">
+                                        <img class="img-responsive"
+                                             th:src="'/images/' + ${item.previewImg}" alt="">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <p th:text="${item.productName}"></p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="text-center padding-top-60" th:text="${item.productPrice}"></td>
+                        <td class="text-center"><!-- Quinty -->
+                            <div class="quinty padding-top-20">
+                                <form action="/add-to-cart" method="post">
+                                    <input type="number" name="amount" min="1" th:value="${item.quantity}"
+                                           th:max="${item.stock}" onchange="submit()"/>
+                                    <input type="hidden" name="pId" th:value="${item.product_id}"/>
+                                    <input type="hidden" name="act" value="update"/>
+                                </form>
+                            </div>
+                        </td>
+                        <td class="text-center padding-top-60" th:text="${item.sub_price}"></td>
+                        <td class="text-center padding-top-60">
+                            <a th:href="@{/remove-item(id=${item.product_id})}" class="remove">
+                                <i class="fa fa-close"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <!-- Item Cart -->
+                    </tbody>
+                </table>
+                <!-- Grand total -->
+                <div class="g-totel">
+                    <h5>Grand total: <span th:text="${session.userCart.total_price}"></span></h5>
+                </div>
+                <!-- Button -->
+                <div class="pro-btn">
+                    <a href="/products" class="btn-round btn-light">Continue Shopping</a>
+                    <a href="/delivery-method" class="btn-round">Go Delivery Methods</a>
+                </div>
+            </div>
+        </section>
+        <!-- Newslatter -->
+        <th:block th:insert="userview/layout/newslatter.html"></th:block>
+
+    </div>
+    <!-- End Content -->
+
+    <!-- Footer -->
+    <th:block th:insert="userview/layout/footer.html"></th:block>
+
+    <!-- End Footer -->
+
+    <!-- GO TO TOP  -->
+    <a href="#" class="cd-top"><i class="fa fa-angle-up"></i></a>
+    <!-- GO TO TOP End -->
+</div>
+<!-- End Page Wrapper -->
+
+<!-- JavaScripts -->
+<th:block th:insert="/userview/layout/script.html"></th:block>
+</body>
+
+<!-- Mirrored from jthemes.net/themes/f-html/smarttech/html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 21 Nov 2023 09:58:44 GMT -->
+
+</html>
